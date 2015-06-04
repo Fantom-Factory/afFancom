@@ -1,0 +1,22 @@
+Version
+*******
+
+v1.0.4
+------
+ - Added 'Flag' operators [plusInt]`Flag.plusInt` and [minusInt]`Flag.minusInt`
+ - Added `Flag.containsAny` and `Flag.containsAll`, deprecated `Flag.contains`
+ - Fixed an issue with method param matching. May have affected some surrogate classes.
+
+v1.0.2
+------
+ - Added support for 'DateTime' and 'Decimal' Fantom types
+ - Added support for more (lesser used) VT types
+ - `Dispatch.call` now throws a FandocErr if a 'VT_ERROR' or an invalid 'VT_HRESULT' is returned
+ - Added serialization ctor to `Flag`
+ - `Dispatch.call` params could get mixed up if 'null' was passed in
+ - Surrogate diagnostics checks for typos and common ctor / static factory mixups
+
+v1.0.0
+------
+ - Initial release.
+

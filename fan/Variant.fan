@@ -1,14 +1,13 @@
 using [java] com.jacob.com::Variant as JVariant
 using [java] java.util::Date as JDate
 
-**
 ** A multi-format data type used for all COM communications.
 ** 
 ** A Variant's type may be queried using the 'isXXX()' methods and returned with the 'asXXX()' 
 ** methods. Variants have the notion of being null, the equivalent of VB Nothing. Whereas Variant 
 ** objects themselves are never null, their 'asXXX()' methods may return null.
 ** 
-** The [asType()]`#asType` method can be used to return any Fantom literal ('Bool', 'Int', 'Emum', 
+** The [asType()]`asType` method can be used to return any Fantom literal ('Bool', 'Int', 'Emum', 
 ** etc...) and also Fancom Surrogates. Surrogates are user defined classes which wrap either a 
 ** `Dispatch` or a `Variant` object. Surrogates make it easy to write boiler plate Fantom classes 
 ** that mimic the behaviour of COM components. 
@@ -28,7 +27,7 @@ using [java] java.util::Date as JDate
 **  - a field with the signature 'Variant variant'
 **  
 ** This allows Variant Surrogates to be passed in as parameters to a Dispatch object, and to be 
-** instantiated from the [asType()]`#asType` method.
+** instantiated from the [asType()]`asType` method.
 ** 
 ** Enums are good candidates for converting into surrogates. Also see `Flag` as another example.
 ** 
@@ -40,7 +39,7 @@ using [java] java.util::Date as JDate
 **
 **
 ** Variant Types [#variantTypes]
-** ===========================
+** =============================
 ** The conversion of types between the various underlying systems is given below:
 ** 
 ** pre>
@@ -160,7 +159,7 @@ class Variant {
 		return varType.isFantomDispatch
 	}
 
-	** Returns 'true' if this Variant represents a `DateTime` object.
+	** Returns 'true' if this Variant represents a [DateTime]`sys::DateTime` object.
 	** Will return 'false' if the Variant represents 'null' as the type cannot be determined.
 	Bool isDateTime() {
 		if (isNull)
@@ -168,7 +167,7 @@ class Variant {
 		return varType.isFantomDateTime
 	}
 
-	** Returns 'true' if this Variant represents a `Decimal` object.
+	** Returns 'true' if this Variant represents a [Decimal]`sys::Decimal` object.
 	** Will return 'false' if the Variant represents 'null' as the type cannot be determined.
 	Bool isDecimal() {
 		if (isNull)

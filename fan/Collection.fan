@@ -4,14 +4,17 @@
 ** 
 ** For Fancom to instantiate the collection subclass it needs a ctor similar to:
 ** 
+**   syntax: fantom
 **   new makeFromDispatch(Dispatch dispatch) : super(dispatch, MyCollectionType#) { }
 ** 
 ** The collection type should be a valid Fancom type or a Fancom surrogate.
 ** 
 ** Subclasses my override methods to narrow the return types:
 ** 
+**   syntax: fantom
+** 
 **   override MyType? item(Int index) {
-**     super.item(index)
+**       super.item(index)
 **   }
 ** 
 ** When doing so, ensure the return type is declared as nullable. See 
@@ -79,7 +82,7 @@ abstract class Collection {
 	** Returns the first item in the collection for which 'callback' returns 'true'. If 'callback' 
 	** returns 'false' for every item, then return 'null'.
 	** 
-	** This method is lazy and *does not* pre-call `#item` for every member in the collection. 
+	** This method is lazy and *does not* pre-call `item` for every member in the collection. 
 	virtual Obj? find(|Obj? v, Int index-> Bool| callback) {
 		count := this.count
 		if (count == null) return null

@@ -24,6 +24,8 @@ using [java] com.jacob.com::Variant as JVariant
 ** An example surrogate would look like:
 **
 ** pre>
+**   syntax: fantom
+** 
 **   using afFancom
 **
 **   class SpVoice {
@@ -50,7 +52,7 @@ using [java] com.jacob.com::Variant as JVariant
 ** COM Events [#comEvents]
 ** =======================
 ** You can register any class to receive events from COM objects by passing it into the
-** [registerForEvents()]`#registerForEvents` method. When a COM event is received, Fancom will 
+** [registerForEvents()]`registerForEvents` method. When a COM event is received, Fancom will 
 ** look for a method on your event sink with the same name as the COM event, prefixed with 'on'.
 ** 
 ** Example: If COM fires an event called 'Recognition' your event sink should have a method called
@@ -58,9 +60,11 @@ using [java] com.jacob.com::Variant as JVariant
 ** Parameters can be the Fantom equivalents including surrogates. A detailed error message is given
 ** should they not match.
 **
-** See [Variant Types]`Variant#variantTypes` for parameter mappings.
+** See [Variant Types]`Variant` for parameter mappings.
 ** 
 ** pre>
+**   syntax: fantom
+** 
 **    ...
 **    dispatch.registerForEvents(this)
 **    ...
