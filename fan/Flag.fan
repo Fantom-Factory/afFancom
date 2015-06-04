@@ -6,7 +6,9 @@
 ** example Flags class:
 ** 
 ** pre>
-**   const class myFlag : Flags {
+** syntax: fantom
+** 
+** const class myFlag : Flags {
 **     static const myFlag one     := myFlag(1, "one")
 **     static const myFlag two     := myFlag(2, "two")
 **     static const myFlag three   := myFlag(3, "three")
@@ -15,42 +17,51 @@
 **     new make(|This|? f := null) : super(f) { }
 **	   new makeFromDefinition(Int flag, Str? name) : super(flag, name) { }
 **	   new makeFromVariant(Variant variant) : super(variant) { }
-**   }
+** }
 ** <pre
 ** 
 ** Set and clear bits by using '+' and '-' operators:
 ** 
 ** pre>
-**    (myFlag.two + myFlag.two) .toStr  --> two
-**    (myFlag.two - myFlag.four).toStr  --> two
+** syntax: fantom
+** 
+** (myFlag.two + myFlag.two) .toStr  --> two
+** (myFlag.two - myFlag.four).toStr  --> two
 ** <pre
 ** 
 ** Multiple flags may be set:
 ** 
 ** pre>
-**    (myFlag.one + myFlag.four).toStr  --> one|four
-**    (myFlag.two + myFlag.four).toStr  --> two|four
+** syntax: fantom
+** 
+** (myFlag.one + myFlag.four).toStr  --> one|four
+** (myFlag.two + myFlag.four).toStr  --> two|four
 ** <pre
 ** 
 ** Flags are automatically coalesced:
 ** 
 ** pre>
-**    (myFlag.one + myFlag.three) .toStr  --> three 
+** syntax: fantom
+** 
+** (myFlag.one + myFlag.three) .toStr  --> three 
 ** <pre
 ** 
 ** Unknown flags are presented as numbers:
 ** 
 ** pre>
-**    (myFlag(16))               .toStr  --> (18)
-**    (myFlag(10))               .toStr  --> two|(8)
-**    (myFlag(27))               .toStr  --> three|(8)|(16)
+** syntax: fantom
+** (myFlag(16))               .toStr  --> (18)
+** (myFlag(10))               .toStr  --> two|(8)
+** (myFlag(27))               .toStr  --> three|(8)|(16)
 ** <pre
 ** 
 ** Every 'Flags' subclass needs to declare the following ctor to fulfil the variant surrogate 
 ** contract:
 ** 
 ** pre>
-**   new makeFromVariant(Variant variant) : super(variant) { }
+** syntax: fantom
+** 
+** new makeFromVariant(Variant variant) : super(variant) { }
 ** <pre
 ** 	
 abstract const class Flag {

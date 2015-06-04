@@ -1,5 +1,5 @@
-Overview [#overview]
-********************
+Overview
+********
 Fancom is a Fantom / COM Automation bridge for Fantom programs running on a JVM. It uses [JACOB]`http://sourceforge.net/projects/jacob-project/` to make native calls to COM libraries via JNI. Fancom features:
  - Runs on x86 and x64 environments supporting 32 bit and 64 bit JVMs.
  - Supports COM Events
@@ -7,8 +7,14 @@ Fancom is a Fantom / COM Automation bridge for Fantom programs running on a JVM.
  - Clean and simple API
 
 
-Usage [#usage]
-**************
+Install
+*******
+To run, Fancom requires the JACOB file to be part of your Fantom installation. In particular:
+ - 'afFancom.pod/lib/java/jacob-XXX.zip' needs to be copied to the 'FAN_HOME/lib/java/ext/' folder and renamed to '.jar'
+ - 'afFancom.pod/lib/dotnet/jacob-XXX.dll' needs to be copied to the 'FAN_HOME/lib/dotnet/' folder
+
+Usage
+*****
 Fancom is centred around the `Dispatch` and `Variant` classes.
 
 `Dispatch` wraps a COM object (the IDispatch interface) and allows you to get / set properties and call methods on the component.
@@ -18,24 +24,30 @@ All parameters to and from Dispatch objects are encapsulated in `Variant` object
 A simple example:
 
 pre>
-  Dispatch outlook := Dispatch.makeFromProgId("Outlook.Application")
-  Str      version := outlook.getProperty(Variant("Version")).asStr
+syntax: fantom
+
+Dispatch outlook := Dispatch.makeFromProgId("Outlook.Application")
+Str      version := outlook.getProperty(Variant("Version")).asStr
 <pre
 
 For ease of use, Fancom will convert all standard Fantom literals to Variants for you, so the last line could be written as:
 
 pre>
-  version := outlook.getProperty("Version").asStr
+syntax: fantom
+
+version := outlook.getProperty("Version").asStr
 <pre
 
-(You can actually pass in *any* Fantom object as long as it looks like a [Variant Surrogate]`Variant#surrogate`.)
+(You can actually pass in *any* Fantom object as long as it looks like a [Variant Surrogate]`Variant`.)
 
 Variants that reference other COM objects may be converted to 'Dispatch' objects allowing chaining:
 
 pre>
-  Dispatch objWord   := Dispatch.makeFromProgId("Word.Application")
-  Dispatch documents := objWord.getProperty("Documents").asDispatch
-  documents.call("Open", "myEssay.doc")
+syntax: fantom
+
+Dispatch objWord   := Dispatch.makeFromProgId("Word.Application")
+Dispatch documents := objWord.getProperty("Documents").asDispatch
+documents.call("Open", "myEssay.doc")
 <pre
 
 
@@ -43,39 +55,10 @@ Events [#events]
 ****************
 You can register any class to receive events from a COM object by calling:
 
+  syntax: fantom
+
   dispatch.registerForEvents(this)
 
-Then when the COM object fires an event Fancom will look for a matching method on your event sink. The method is the name of the event, prefixed with 'on'. For example, if the event is called FalseRecognition your handler method should be called 'onFalseRecognition()'
+Then when the COM object fires an event Fancom will look for a matching method on your event sink. The method is the name of the event, prefixed with 'on'. For example, if the event is called 'FalseRecognition' your handler method should be called 'onFalseRecognition()'
 
-
-Install [#install]
-******************
-To run, Fancom requires the JACOB file to be part of your Fantom installation. In particular:
- - 'afFancom.pod/lib/java/jacob-XXX.zip' needs to be copied to the 'FAN_HOME/lib/java/ext/' folder and renamed to '.jar'
- - 'afFancom.pod/lib/dotnet/jacob-XXX.dll' needs to be copied to the 'FAN_HOME/lib/dotnet/' folder
-
-**TODO:** write a simple install script to copy the pod files
-
-
-Release Notes [#releaseNotes]
-*****************************
-
-v1.0.4 [#v1.0.4]
-----------------
- - Added 'Flag' operators [plusInt]`Flag.plusInt` and [minusInt]`Flag.minusInt`
- - Added `Flag.containsAny` and `Flag.containsAll`, deprecated `Flag.contains`
- - Fixed an issue with method param matching. May have affected some surrogate classes.
-
-v1.0.2 [v1.0.2]
----------------
- - Added support for 'DateTime' and 'Decimal' Fantom types
- - Added support for more (lesser used) VT types
- - `Dispatch.call` now throws a FandocErr if a 'VT_ERROR' or an invalid 'VT_HRESULT' is returned
- - Added serialization ctor to `Flag`
- - `Dispatch.call` params could get mixed up if 'null' was passed in
- - Surrogate diagnostics checks for typos and common ctor / static factory mixups
-
-v1.0.0 [#v1.0.0]
-----------------
- - Initial release.
 
