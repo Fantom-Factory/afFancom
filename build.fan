@@ -5,12 +5,12 @@ class Build : BuildPod {
 	new make() {
 		podName = "afFancom"
 		summary = "A Fantom / COM Automation bridge for the JVM Runtime"
-		version = Version("1.0.4")
+		version = Version("1.0.5")
 		
 		meta = [
 			"proj.name"		: "Fancom",	
 			"repo.tags"		: "system",
-			"repo.public"	: "true"
+			"repo.public"	: "false"
 		]
 	
 		depends = [
