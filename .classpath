@@ -3,5 +3,5 @@
 	<classpathentry kind="con" path="com.xored.fanide.jdt.launching.FANJAVA_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="res/jacob-1.17-M2/jacob-1.17-M2.zip" sourcepath="res/jacob-1.17-M2/jacob-1.17-M2-sources.zip"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="output" path="build"/>
 </classpath>
