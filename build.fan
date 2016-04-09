@@ -17,7 +17,7 @@ class Build : BuildPod {
 			"sys 1.0"
 		]
 
-		srcDirs = [`test/`, `test/utils/`, `fan/`, `fan/internal.utils/`, `fan/internal/`]
+		srcDirs = [`fan/`, `fan/internal/`, `fan/internal.utils/`, `test/`, `test/utils/`]
 		resDirs = [`doc/`, `res/jacob-1.17-M2/`]
 		javaDirs = [`java/`]
 	}
